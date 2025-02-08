@@ -37,5 +37,23 @@ function actualizarLista() {
     }
 }
 
-
 //sorteo aleatoreo: al hacer clic en el boton "sortear amigo", se seleccionara aleatoriamente un nombre de la lista y se mostrara en la pagina
+function sortearAmigo() {
+    // 1. Validar que haya amigos disponibles
+    if (amigos.length === 0) {
+
+      alert("La lista de amigos está vacía. No se puede realizar el sorteo.");
+      document.getElementById("resultado").innerHTML = "No hay amigos disponibles para el sorteo.";
+      return;
+    }
+  
+    // 2. Generar un índice aleatorio
+    let indiceAleatorio = Math.floor(Math.random() * amigos.length);
+  
+    // 3. Obtener el nombre sorteado
+    let amigoSorteado = amigos[indiceAleatorio];
+  
+    // 4. Mostrar el resultado en el HTML
+    document.getElementById("resultado").innerHTML = "El nombre de tu amigo secreto es: " + amigoSorteado;
+  
+  }
