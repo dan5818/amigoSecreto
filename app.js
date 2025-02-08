@@ -11,13 +11,13 @@ function agregarAmigo(){//tomamos la funcion del index
     let namigo = document.getElementById("amigo").value.trim();
 
     //validamos la entrada  
-    // Verifica si no está vacío
+    // Verifica si no está vacíos
     if(namigo != ''){//compara entre si hay caracteres o no hay y de ahi decide que operacion continua deacuerdo a las opciones restantes en cada caso
-       
+       // visualiza la lista: los nombres ingresados apareceran en una lista debajo del campo de entrada
         amigos.push(namigo);//agrega el valor inamigo a el array de nombre amigos y nos suma un nombre a la lista
         document.getElementById("listaAmigos").innerHTML = amigos.map(amigo => `<p>${amigo}</p>`).join('');// con esta linea le damos formato y desplegamos el nombre capturado para que se muestre abajo en forma de lista 
     
-    } else {//en caso de que no se escriba nada o eeste vacio el campo nos despliega mensaje de error para ingresar un nombre valido
+    } else {//valida entrada: si el campo esta vacio muestra alerta pididendo nombre valido
         alert("Por favor, ingresa un nombre válido.");
     }
     //despues de terminar la comparacion pero aun dentro de la funcion agregar amigo
@@ -25,7 +25,17 @@ function agregarAmigo(){//tomamos la funcion del index
     document.getElementById("amigo").value = "";  // Limpiar el campo
    
 }
+function actualizarLista() {
+    const listaAmigos = document.getElementById("listaAmigos"); // Obtenemos el elemento de la lista
+    listaAmigos.innerHTML = ""; // Limpiamos la lista antes de agregar nuevos elementos
 
-//valida entrada: si el campo esta vacio muestra alerta pididendo nombre valido
-// visualiza la lista: los nombres ingresados apareceran en una lista debajo del campo de entrada
+    // Iteramos sobre el arreglo amigos y agregamos cada nombre como <li>
+    for (let i = 0; i < amigos.length; i++) {
+        const li = document.createElement("li"); // Creamos un nuevo elemento <li>
+        li.textContent = amigos[i];             // Asignamos el nombre del amigo al <li>
+        listaAmigos.appendChild(li);            // Agregamos el <li> a la lista
+    }
+}
+
+
 //sorteo aleatoreo: al hacer clic en el boton "sortear amigo", se seleccionara aleatoriamente un nombre de la lista y se mostrara en la pagina
